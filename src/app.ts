@@ -32,5 +32,27 @@ class App {
     this.express.use(compression())
   }
 
-  private initialiseControllers(controllers: Controller[]): void {}
+  private initialiseControllers(controllers: Controller[]): void {
+    controllers.forEach((controller: Controller) => {
+      this.express.use('/api', controller.router)
+    })
+  }
+
+  private initialiseErrorHandling(): void {
+    this.express.use(ErrorMiddleware())
+  }
+
+  private initialiseDatabaseConnection(): void {
+    const { MONGO_USER, MONGO_PASSWORD, MONGO_PATH } = process.env
+
+    mongoose.connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}:${MONGO_PATH}`)
+  }
+
+  public listen(): void {
+    this.express.listen(this.port, () => {
+      console.info(`App listening on port ${this.port}`)
+    })
+  }
 }
+
+export default App
