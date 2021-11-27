@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express'
-import HttoException from '@utils/exceptions/http.exception'
+import HttpException from '@utils/exceptions/http.exception'
 
 const errorMiddleware = (
-  error: HttoException,
+  error: HttpException,
   req: Request,
   res: Response,
   next: NextFunction

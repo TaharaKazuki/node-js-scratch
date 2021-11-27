@@ -5,7 +5,7 @@ import cors from 'cors'
 import morgan from 'morgan'
 import helmet from 'helmet'
 
-import Controller from '@utils/interfaces/controller.interface'
+import IController from '@utils/interfaces/controller.interface'
 
 import ErrorMiddleware from '@/middleware/error.middleware'
 
@@ -13,7 +13,7 @@ class App {
   public express: Application
   public port: number
 
-  constructor(controllers: Controller[], port: number) {
+  constructor(controllers: IController[], port: number) {
     this.express = express()
     this.port = port
 
@@ -32,8 +32,8 @@ class App {
     this.express.use(compression())
   }
 
-  private initialiseControllers(controllers: Controller[]): void {
-    controllers.forEach((controller: Controller) => {
+  private initialiseControllers(controllers: IController[]): void {
+    controllers.forEach((controller: IController) => {
       this.express.use('/api', controller.router)
     })
   }

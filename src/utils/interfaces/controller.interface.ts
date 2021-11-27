@@ -1,8 +1,8 @@
 import { Router } from 'express'
 
-interface Contorller {
+interface IContorller {
   path: string
   router: Router
 }
 
-export default Contorller
+export default IContorller

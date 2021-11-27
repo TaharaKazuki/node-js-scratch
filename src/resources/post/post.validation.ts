@@ -1,2 +1,8 @@
-import { Schema, model } from 'mongoose'
-import Post from '@/resources/post/post.interface'
+import Joi from 'joi'
+
+const create = Joi.object({
+  title: Joi.string().required(),
+  body: Joi.string().required(),
+})
+
+export default { create }

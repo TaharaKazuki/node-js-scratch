@@ -1,4 +1,4 @@
-class HttoException extends Error {
+class HttpException extends Error {
   public status: number
   public message: string
 
@@ -9,4 +9,4 @@ class HttoException extends Error {
   }
 }
 
-export default HttoException
+export default HttpException
